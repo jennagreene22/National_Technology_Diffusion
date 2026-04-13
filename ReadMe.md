@@ -5,72 +5,48 @@ Jenna Greene
 
 ## Overview
 This code is used to analyze temporal, technology, and country characteristics that impact the speed of technology diffusion using a dataset of historical technology adoption. 
+Python code produces growth speeds based on time series in the HATCH dataset using curve fitting. Further analyses of growth speeds generated in the Python file is done in R.
+In this repository, the results of the python growth speed analysis are available in `Analysis-Code/00_data` if only running the R portion of the analysis.
 
 ## Repository structure
-- `Data` — Processed data needed to run Analysis-Code
+- `Data` — Processed data needed to run Analysis-Code (provided in folder and Zenodo link below)
+  - `all_growth_merge.csv` is the HATCH data with growth speed, technology characteristics, and country characteristics for each technology-country time series
+  - `technology_growth.csv` is the growth speed data generated from the Python script
 - `Hatch-Data-Prep`
     - `Measuring Growth Speed.ipynb` — measures speed of technology diffusion (Python script)
-- `Analysis-Code/00_data`
-    - location for data needed to run scripts (place data from previous Python script in this folder)
-- `Analysis-Code/02_scripts` (run in this order)
-    - `clean_hatch_data.R` — reads in and cleans HATCH data necessary for analysis (helper code)
-    - `describe_hatch_data.R` - summary of HATCH data (helper code)
-    - `significance_tests.R` — function that generates reports of significance between variables
-    - `summary_stats.R` — function that generates tables to summarize each variable
-    - `regressions_list.R` — function that generates a list of regression results from a list of independent variables with an inputted dependent variable (linear regression, polynomial with squared term, polynomial with cubic term)
+- `Analysis-Code/data`
+    - location for data needed to run scripts. `all_growth_merge.csv` is the HATCH data here for use in the R analysis (available also at Zenodo link below).
+- `Analysis-Code/scripts` 
+    - `00_national_tech_diffusion_initialization` - loads relevant packages and runs all scripts below
+    - `01_clean_hatch_data.R` — reads in and cleans HATCH data necessary for analysis (helper code)
+    - `02_describe_hatch_data.R` - summary of HATCH data (helper code)
+    - `03_regressions_list.R` — function that generates a list of regression results from a list of independent variables with an inputted dependent variable (linear regression, polynomial with squared term, polynomial with cubic term)
+    - `04_significance_tests.R` — function that generates reports of significance between variables
+    - `05_summary_stats.R` — function that generates tables to summarize each variable
     - `plot_functions/categorical_plots.R` — function that creates categorical plot style
     - `plot_functions/numerical_plots.R` — function that creates numerical plot style
-    - `generate_figures.R` - generates figures for main text
-    - `generate_tables.R` - generates tables for main text
-    - `generate_figures_Supplemental.R` - generates figures for supplemental analysis
-    - `generate_tables_Supplemental.R` - generates tables for supplemental analysis
-    - `supplemental_analysis.R` - analysis for SI not in tables or figures
-- `Analysis-Code/03_figures` - location for figures
-- `Analysis_Code/04_reports` - location for tables and reports
+    - `06_generate_figures.R` - generates figures for main text
+    - `07_generate_tables.R` - generates tables for main text
+    - `08_generate_figures_supplemental.R` - generates figures for supplemental analysis
+    - `09_generate_tables_supplemental.R` - generates tables for supplemental analysis
+    - `10_supplemental_analysis.R` - analysis for SI not in tables or figures
 - `README.md` — this file
 
-### Python
+### Python (Optional to generate growth speeds directly)
 - Create environment and install:
     - python3
-- Optional: Run:
-    - "Measuring Speed.ipynb"
+    - Load the following modules:
+      - pandas, numpy, math, matplotlib.pyplot, warnings, os.path, sklearn.metrics, scripy.optimize
+- Optional (if generating growth speeds directly from HATCH data): Run:
+    - "Measuring Growth Speed.ipynb"
 
 ### R
 - Create R environment
-- Run scripts:
-    - `clean_hatch_data.R` 
-    - `describe_hatch_data.R`
-    - `significance_tests.R` 
-    - `summary_stats.R` 
-    - `regressions_list.R`
-    - `plot_functions/categorical_plots.R`
-    - `plot_functions/numerical_plots.R` 
-    - `generate_figures.R`
-    - `generate_tables.R` 
-    - `generate_figures_Supplemental.R`
-    - `generate_tables_Supplemental.R`
-    - `supplemental_analysis.R` 
-
-## Usage / Workflow
-Workflow for results: 
-1. Clean HATCH data:  Analysis-Code/02_scripts/clean_hatch_data.R
-    ** Note: data is contained in 00_data folder. Set working directory to relevant file as needed.
-2. Run functions:
-    - `significance_tests.R` 
-    - `summary_stats.R` 
-    - `regressions_list.R`
-    - `plot_functions/categorical_plots.R`
-    - `plot_functions/numerical_plots.R` 
-3. Generate figures for main text: Analysis-Code/02_scripts/generate_figures.R
-4. Generate tables for main text and methods: Analysis-Code/02_scripts/generate_tables.R
-5. Generate figures for supplementary: Analysis-Code/02_scripts/generate_figures_Supplementary.R
-6. Generate tables for supplementary: Analysis-Code/02_scripts/generate_tables_Supplementary.R
-7. Generate other supplemental analysis: Analysis-Code/02_scripts/supplemental_analysis.R
-(optional: run "Measuring Speed.ipynb" to analyze curve fitting processes. Time series data is contained in same folder (Hatch-Data-Prep))
+- Load packages and run scripts from initialization file:
+    - `00_national_tech_diffusion_initialization` 
 
 ## Outputs
-The files for the main analysis (generate_figures.R and generate_tables.R) output the figures, tables, and results for the main text.
-
+The files for the main analysis (06_generate_figures.R and 07_generate_tables.R) output the figures, tables, and results for the main text.
 `generate_figures.R` generates:
     - figure 1: describing the number of technologies per country and countries per technology in the HATCH dataset ("descriptive_histograms_fig1.png")
     - figure 2: relationships between technology characteristics and growth speed ("Combined_Scatterplots_fig2.png")
