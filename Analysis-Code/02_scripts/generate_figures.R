@@ -72,6 +72,8 @@ descriptive_HATCH_histograms <- ggarrange(hist, hist_2,
                                           ncol =2, nrow = 1)
 ggsave("descriptive_histograms_fig1.png", 
        descriptive_HATCH_histograms, width = 11, height = 6, units = "in", dpi = 300)
+ggsave("descriptive_histograms_fig1.pdf", 
+       descriptive_HATCH_histograms, width = 11, height = 6, units = "in", dpi = 300)
 
 ### ---------------------- Figure 2  -------------------
                   #Visualize Numerical Variables #
@@ -189,6 +191,7 @@ legend_plot <- ggplot(legend_data, aes(x = 1, y = technology, color = technology
 
 # Save the legend plot as an image file
 ggsave("legend_plot_fig2.png", legend_plot, width = 12.5, height = 4, dpi = 300)
+ggsave("legend_plot_fig2.pdf", legend_plot, width = 12.5, height = 4, dpi = 300)
 
 # Gray dots
 
@@ -233,7 +236,8 @@ grid_arrange_plots <- ggarrange(comm_med_scatter,
 ggsave(file.path("Combined_Scatterplots_fig2.png"), grid_arrange_plots,
        width = 14, height = 14, dpi = 300)
 
-
+ggsave(file.path("Combined_Scatterplots_fig2.pdf"), grid_arrange_plots,
+       width = 14, height = 14, dpi = 300)
 ### ---------------------- Figure 3  -------------------
                   # Visualize Categorical Variables #
 #setwd('02_scripts/plot_functions') #<- set working directory to load in function
@@ -248,7 +252,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c('Low Material Use', 'Medium Material Use', 'High Material Use'), 
                           label_vars = c('Low','Medium', 'High'),
                           plot_title = "Material Intensity", 
-                          save_filename = "materialuse_boxplot.png")
+                          save_filename = "materialuse_boxplot.pdf")
 
 # Complexity
 describe_categorical_tech(data = hatch_growth_filter, 
@@ -258,7 +262,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c('Simple [1]', 'Design-Intensive [2]', 'Complex [3]'), 
                           label_vars = c('Simple', 'Design-Intensive', 'Complex'),
                           plot_title = "Complexity", 
-                          save_filename = "complexity.png")
+                          save_filename = "complexity.pdf")
 
 # Need for Customization
 describe_categorical_tech(data = hatch_growth_filter,
@@ -268,7 +272,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c('Standardized [1]', 'Mass-customized [2]', 'Customized [3]'), 
                           label_vars = c('Standardized', 'Mass-customized', 'Customized'), 
                           plot_title = 'Need for Customization', 
-                          save_filename = 'custom.png')
+                          save_filename = 'custom.pdf')
 
 # Technology Lifetime
 describe_categorical_tech(data = hatch_growth_filter, 
@@ -278,7 +282,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c('Months', 'Years', 'Decades'), 
                           label_vars = c('Months', 'Years', 'Decades'),
                           plot_title = "Technology Lifetime", 
-                          save_filename = "tech_lifetime_boxplot.png")
+                          save_filename = "tech_lifetime_boxplot.pdf")
 
 # Type of Adopter
 describe_categorical_tech(data = hatch_growth_filter, 
@@ -288,7 +292,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c('Firms [1]', 'Individuals [2]', 'Both [3]'), 
                           label_vars = c('Firms','Individuals', 'Both'),
                           plot_title = "Type of Adopter", 
-                          save_filename = "adopt_boxplot.png")
+                          save_filename = "adopt_boxplot.pdf")
 
 # Granularity 
 describe_categorical_tech(data = hatch_growth_filter,
@@ -298,7 +302,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c("Low", "Medium", "High"),
                           label_vars =  c("Low", "Medium", "High"),
                           plot_title = "Granularity", 
-                          save_filename = "granularity_boxplot.png")
+                          save_filename = "granularity_boxplot.pdf")
 
 # Replacement
 describe_categorical_tech(data = hatch_growth_filter,
@@ -308,7 +312,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c("Yes", "No"),
                           label_vars = c("Yes", "No"),
                           plot_title = "Broad Replacement",
-                          save_filename = 'replaceent_boxplot.png')
+                          save_filename = 'replaceent_boxplot.pdf')
 
 # Feedstock
 describe_categorical_tech(data = hatch_growth_filter,
@@ -318,7 +322,7 @@ describe_categorical_tech(data = hatch_growth_filter,
                           category_order = c("Yes", "No"),
                           label_vars = c("Yes", "No"),
                           plot_title = "Feedstock",
-                          save_filename = 'feedstock_boxplot.png')
+                          save_filename = 'feedstock_boxplot.pdf')
 
 ### ----------------------  Figure 4 -------------------
                  # Visualize Correlations #
@@ -429,6 +433,7 @@ vif_plot <- ggplot(vif_df, aes(x = reorder(variable_name, gvif), y = gvif)) +
 combined_correlations <- ggarrange(correlations_hatch, vif_plot,  nrow = 2, labels = c("a", "b"), font.label= list(size = 24, face = 'bold'))
 
 ggsave("combined_correlations_fig4.png", combined_correlations, width = 12, height = 12, units = "in", dpi = 300)
+ggsave("combined_correlations_fig4.pdf", combined_correlations, width = 12, height = 12, units = "in", dpi = 300)
 
 
 ## ---------------------- Figure 5
@@ -453,7 +458,7 @@ M18 <- lm(Logistic.Fit ~ FirstCommercialYr +
             dem + Capacity_Average, data = hatch_growth_filter)
 
 M19 <- lm(Logistic.Fit ~ 
-            Complexity + FirstCommercialYr, 
+            FirstCommercialYr + Capacity_Average + dem + log_Granularity.Numerical , 
           data = hatch_growth_filter)
 
 
@@ -504,8 +509,8 @@ facet_labels <- c('Time and Institutional Variables' = 'a',
 label_data <- data.frame(
   model = names(facet_labels), 
   label = facet_labels,
-  x = rep(0, length(facet_labels)),  # x-position for labels (can adjust as needed)
-  y = rep(Inf, length(facet_labels))  # y-position for labels (can adjust as needed)
+  x = rep(0, length(facet_labels)), 
+  y = rep(Inf, length(facet_labels))
 )
 # Create the plot
 coeff_plot <- ggplot(tidy_df_noint, aes(x = estimate, y = label, colour = var_type)) +
@@ -523,5 +528,7 @@ coeff_plot <- ggplot(tidy_df_noint, aes(x = estimate, y = label, colour = var_ty
 print(coeff_plot)
 
 ggsave("multivariate_coefficient_estimates_plot_fig5.png", plot = coeff_plot, width = 12, height = 10, dpi = 300)
+ggsave("multivariate_coefficient_estimates_plot_fig5.pdf", plot = coeff_plot, width = 12, height = 10, dpi = 300)
+
 
 

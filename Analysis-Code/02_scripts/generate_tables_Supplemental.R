@@ -206,7 +206,7 @@ output_file <- "regression_table_combined_short.html"
 
 
 report_multiple_reg <- stargazer(M1, M3, M2, M15, M20, M21, M19, 
-                                 type = "text",  
+                                 type = "text",  report = 'vc*sp',
                                  dep.var.labels=c("Speed of Diffusion"),
                                  order = c("FirstCommercialYr", "log.Granularity.Numerical", "log_Material.Use.Numerical", "log_Average.lifetime", 
                                            'Type.of.AdopterIndividuals[2]', 'Type.of.AdopterBoth[3], Complexity.L, Complexity.Q'),
@@ -606,7 +606,8 @@ model8 <- lm(Logistic.Fit ~ Number.of.Points + dem, data = hatch_growth_filter)
 
 output_file <-"regression_table_sensitivity.html"
 report_multiple_reg_sens <- stargazer(model1, model2, model3, model4, model5, model7,model6,
-                                      type = "text",  
+                                      type = "text",
+                                      report = 'vc*sp',
                                       dep.var.labels=c("Speed of Diffusion"),
                                       order = c("Vintage", "Number.of.Points",
                                                 "FirstCommercialYr", 

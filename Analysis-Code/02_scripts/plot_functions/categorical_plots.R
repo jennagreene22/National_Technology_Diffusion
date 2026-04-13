@@ -1,18 +1,5 @@
-# This function creates boxplots and histograms to summarizze technology categorical data
-
-# 2024 analysis, updated April 2025
-# Jenna Greene
-
-
-library(ggplot2)
-library(ggpubr)
-library(gridExtra)
-library(stringr)
-
-# Set working directory
-#setwd('../../')
-#setwd('03_plots/description/categorical')
-
+# This function creates boxplots and histograms to summarize technology categorical data
+# Code written by: Jenna Greene
 
 # Set colors of boxplots
 boxplot_colors <- c("coral2", "darkgoldenrod1", "darkturquoise",
@@ -24,10 +11,10 @@ boxplot_colors <- c("coral2", "darkgoldenrod1", "darkturquoise",
 ## Boxplot function - Technology ---------------------------------------------------
 describe_categorical_tech <- function(data, x_var, y_var, category_var, category_order, label_vars, plot_title, save_filename) {
   
-  # Filter out rows with blank category values, NAs, or "None"
+  # Filter out rows with blank categorical values, NAs, or "None"
   data <- data[!(is.na(data[[category_var]]) | data[[category_var]] == "" | data[[category_var]] == "None!"), ]
   
-  # Convert category_var to factor with desired levels
+  # Convert categorical variable to factor with given levels
   data[[category_var]] <- factor(data[[category_var]], levels = category_order)
   
   # Calculate counts for each category
@@ -50,7 +37,7 @@ describe_categorical_tech <- function(data, x_var, y_var, category_var, category
   
   # Create the boxplot
   boxplot <- ggplot(data, aes(x = .data[[x_var]], y = .data[[y_var]], fill = .data[[category_var]])) +
-    geom_boxplot() +
+    geom_boxplot() + 
     labs(x = plot_title, y = "Diffusion Speed") +
     scale_fill_manual(values = boxplot_colors, 
                       name = plot_title, 

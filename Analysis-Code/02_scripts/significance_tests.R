@@ -10,7 +10,7 @@ perform_statistical_tests <- function(data, variables, response_var) {
     anova_summary <- summary(anova_result)
     
     # Extract ANOVA information
-    anova_df <- as.data.frame(anova_summary[[1]]) # Extract the first element of the summary, which contains the ANOVA table
+    anova_df <- as.data.frame(anova_summary[[1]]) 
     
     # Save ANOVA results
     save_name_anova <-paste0("Update_anova_", var, ".csv")
@@ -25,12 +25,15 @@ perform_statistical_tests <- function(data, variables, response_var) {
     save_name_kruskal <- paste0("Update_kruskal_", var, ".csv")
     write.csv(kruskal_tidy, save_name_kruskal, row.names = FALSE)
     
-    # Perform Dunn's test (NON-PARAMETRIC POST HOC)
-    dunn_result <- dunn.test(data[[response_var]], data[[var]], method = "none")
+    # Perform Dunn's test (Non-parametric post hoc test)
+    num_groups <- length(unique(na.omit(data[[var]])))
+    if (num_groups > 2){
+    dunn_result <- dunn.test(data[[response_var]], data[[var]], method = "holm")
     
     # Create a data frame for Dunn's test results
     dunn_df <- data.frame(
       Comparison = dunn_result$comparisons,
+      Z.Statistic = dunn_result$Z,
       P.value = dunn_result$P,
       Adjusted.P.value = dunn_result$P.adjusted
     ) 
@@ -38,7 +41,8 @@ perform_statistical_tests <- function(data, variables, response_var) {
     # Save Dunn's test results
     save_name_dunn <- paste0("Update_dunn_", var, ".csv")
     write.csv(dunn_df, save_name_dunn, row.names = FALSE)
-    
+    }
+    else {dunn_df <- NULL}
     # Perform Tukey's test (NORMAL)
     tukey_test <- TukeyHSD(anova_result)
     tukey_tidy <- tidy(tukey_test)

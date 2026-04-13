@@ -3,9 +3,6 @@
 
 #install.packages('ggplot2')
 
-library(ggplot2)
-library(ggpubr)
-library(dplyr)
  
 ## ------ Load in Data -----
 setwd('../')

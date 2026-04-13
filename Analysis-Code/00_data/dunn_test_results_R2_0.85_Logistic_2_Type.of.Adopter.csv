@@ -1,0 +1,4 @@
+"Comparison","P.value","Adjusted.P.value","Chi.squared","Categorical_Variable"
+"Both [3] - Firms [1]",4.6213194478534e-07,4.6213194478534e-07,-4.90711384540751,"Type.of.Adopter"
+"Both [3] - Individuals [2]",1.95984610137533e-56,1.95984610137533e-56,-15.7854299710481,"Type.of.Adopter"
+"Firms [1] - Individuals [2]",5.29630218643823e-31,5.29630218643823e-31,-11.5189235296599,"Type.of.Adopter"

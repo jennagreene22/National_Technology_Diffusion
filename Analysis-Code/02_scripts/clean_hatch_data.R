@@ -3,14 +3,14 @@
 # From 2024 code, updated Apr 2025
 # Jenna Greene
 #install.packages('dplyr')
-library(dplyr)  #data manipulation and cleaning    
+
 
   
 ## ---- Load in HATCH data ------
 #setwd('../')
 #setwd('00_data') # set wd to where the data is saved
 data_file_path = 'all_growth_merge_Updated.csv'
-
+hatch_growth <- read.csv(data_file_path)
 ## ---------------------------- Clean Dataset ---------------------------------- 
 
 ## Set relevant columns to convert to numerical
