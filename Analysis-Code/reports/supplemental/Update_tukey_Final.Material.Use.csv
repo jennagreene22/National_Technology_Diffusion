@@ -1,4 +1,0 @@
-"term","contrast","null.value","estimate","conf.low","conf.high","adj.p.value"
-"Final.Material.Use","Medium Material Use-Low Material Use",0,0.0552618911791919,0.0284145426426201,0.0821092397157638,4.50835154996998e-06
-"Final.Material.Use","High Material Use-Low Material Use",0,-0.0503220570322804,-0.0910386252892341,-0.00960548877532665,0.0105857106490409
-"Final.Material.Use","High Material Use-Medium Material Use",0,-0.105583948211472,-0.148588434686534,-0.0625794617364104,3.04132831141501e-08

@@ -15,6 +15,7 @@ setwd('supplemental')
 ## ------  Figure of coefficients (bivariates)
 
 # Generate dot-and-whisker plot
+# Must run '07_generate_tables.R'
 dw_plot <- dwplot(bivariatemodelList) +
   theme_minimal() +
   # Add a dotted vertical line at 0

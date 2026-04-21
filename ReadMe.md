@@ -6,7 +6,7 @@ Jenna Greene
 ## Overview
 This code is used to analyze temporal, technology, and country characteristics that impact the speed of technology diffusion using a dataset of historical technology adoption. 
 Python code produces growth speeds based on time series in the HATCH dataset using curve fitting. Further analyses of growth speeds generated in the Python file is done in R.
-In this repository, the results of the python growth speed analysis are available in `Analysis-Code/00_data` if only running the R portion of the analysis.
+In this repository, the results of the python growth speed analysis are available in `Analysis-Code/00_data` if the user is only running the R portion of the analysis.
 
 ## Repository structure
 - `Data` — Processed data needed to run Analysis-Code (provided in folder and Zenodo link below)
@@ -31,6 +31,8 @@ In this repository, the results of the python growth speed analysis are availabl
     - `09_generate_tables_supplemental.R` - generates tables for supplemental analysis
     - `10_supplemental_analysis.R` - analysis for SI not in tables or figures
 - `README.md` — this file
+
+## Workflow
 
 ### Python (Optional to generate growth speeds directly)
 - Create environment and install:

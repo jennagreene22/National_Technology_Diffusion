@@ -1,4 +1,0 @@
-"Comparison","P.value","Adjusted.P.value","Chi.squared","Categorical_Variable"
-"Complex [3] - Design-Intensive [2]",2.6332192393231e-12,2.6332192393231e-12,-6.89820319085851,"Complexity"
-"Complex [3] - Simple [1]",3.85404903960355e-42,3.85404903960355e-42,-13.5520185100944,"Complexity"
-"Design-Intensive [2] - Simple [1]",9.966804831873e-09,9.966804831873e-09,-5.61257644827144,"Complexity"

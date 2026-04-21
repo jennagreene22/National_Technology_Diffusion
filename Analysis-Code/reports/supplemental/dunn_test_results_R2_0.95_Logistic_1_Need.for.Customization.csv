@@ -1,4 +1,0 @@
-"Comparison","P.value","Adjusted.P.value","Chi.squared","Categorical_Variable"
-"Customized [3] - Mass-customized [2]",1.53282121748917e-16,1.53282121748917e-16,-8.170716114995,"Need.for.Customization"
-"Customized [3] - Standardized [1]",9.60448937089332e-36,9.60448937089332e-36,-12.4246397480164,"Need.for.Customization"
-"Mass-customized [2] - Standardized [1]",0.404052330913472,0.404052330913472,-0.242871864661329,"Need.for.Customization"

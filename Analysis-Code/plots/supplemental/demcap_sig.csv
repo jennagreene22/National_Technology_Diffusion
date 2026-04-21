@@ -1,7 +1,0 @@
-"Comparison","P.value","Adjusted.P.value"
-"Democracy_High - Democracy_Low",0.411670740793016,0.411670740793016
-"Democracy_High - Not Democracy_High",5.62704609690676e-05,5.62704609690676e-05
-"Democracy_Low - Not Democracy_High",0.0728474743130222,0.0728474743130222
-"Democracy_High - Not Democracy_Low",1.05944253483064e-06,1.05944253483064e-06
-"Democracy_Low - Not Democracy_Low",0.0428920458998651,0.0428920458998651
-"Not Democracy_High - Not Democracy_Low",0.217964129294494,0.217964129294494
